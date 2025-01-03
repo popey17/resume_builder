@@ -10,14 +10,12 @@ function App() {
   return (
     <>
       <Nav />
-      <div className='mt-[65px]'>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/reset-password" element={<ForgetPassword />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/reset-password" element={<ForgetPassword />} />
+      </Routes>
     </>
   )
 }

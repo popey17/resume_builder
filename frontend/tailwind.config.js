@@ -9,6 +9,8 @@ export default {
       colors: {
         'primary': '#F6A365',
         'primaryHover': '#FAC094',
+        'primaryLight': '#FEEDE1',
+        'primaryLight2': '#F6DDCA',
         'secondary': '#BCCCDC',
         'error': '#F16464',
         'background': '#F7F7F7',
