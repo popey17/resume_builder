@@ -1,20 +1,79 @@
 import './App.css'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import ForgetPassword from './pages/ForgetPassword'
 import Nav from './components/main/Nav'
+import { ToastContainer } from 'react-toastify';
+import { useAuthStore } from './store/AuthStore'
+import { useEffect } from 'react'
+import EmailVerification from './pages/EmailVerification'
+
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated, user } = useAuthStore()
+  if (isAuthenticated && user) {
+    return children;
+  }
+  return <Navigate to="/login" replace />
+}
+
+const DirectVerifiedUser = ({ children }) => {
+  const { isAuthenticated, user } = useAuthStore()
+  if (isAuthenticated && user && user.isVerified) {
+    return <Navigate to="/dashboard" replace />
+  }
+  return children;
+}
+
+const RedirectAuthUsers = ({ children }) => {
+  const { isAuthenticated, user } = useAuthStore()
+  if (isAuthenticated && user) {
+    return <Navigate to="/" replace />
+  }
+  return children;
+}
+
 function App() {
+  const { checkIsAuthenticated , user } = useAuthStore();
+
+  useEffect(() => {
+    checkIsAuthenticated();
+  }, [checkIsAuthenticated])
+
+
+  // console.log(user);
+  
 
   return (
+
     <>
       <Nav />
+      <ToastContainer />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/reset-password" element={<ForgetPassword />} />
+        <Route path="/" element={
+          <Home />
+        } />
+        <Route path="/login" element={
+          <RedirectAuthUsers>
+            <Login />
+          </RedirectAuthUsers>
+        } />
+        <Route path="/register" element={
+          <RedirectAuthUsers>
+            <Register />
+          </RedirectAuthUsers>
+        } />
+        <Route path="/reset-password" element={
+          <ProtectedRoute>
+            <ForgetPassword />
+          </ProtectedRoute>
+        } />
+        <Route path="/verify-email" element={
+          <DirectVerifiedUser>
+            <EmailVerification />
+          </DirectVerifiedUser>
+        } />
       </Routes>
     </>
   )

@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
 
-const Button = ({ children, className, href, link }) => {
+const Button = ({ children, className, href, link, type, onClick }) => {
   if (link) {
     return (
-      <Link to={href} className={`bg-primary text-white px-4 py-2 rounded-md hover:bg-primaryHover inline-block ${className}`}>
+      <Link to={href} className={`bg-primary text-white px-4 py-2 rounded-md hover:bg-primaryHover flex justify-center w-fit mx-auto ${className}`}>
         {children}
       </Link>
     );
   } else {
     return (
-      <button className={`bg-primary text-white px-4 py-2 rounded-md hover:bg-primaryHover inline-block ${className}`}>
+      <button type={type} className={`bg-primary text-white px-4 py-2 rounded-md hover:bg-primaryHover flex justify-center ${className}`} onClick={onClick}>
         {children}
       </button>
     );
