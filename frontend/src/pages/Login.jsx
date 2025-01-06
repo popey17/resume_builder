@@ -4,6 +4,7 @@ import FormInput from "../components/form/FormInput"
 import FormLabel from "../components/form/FormLabel"
 import { useAuthStore } from "../store/AuthStore"
 import { ColorRing } from 'react-loader-spinner'
+import { Link } from "react-router-dom"
 
 
 
@@ -22,8 +23,6 @@ const Login = () => {
     await signIn(userCredentials)
   }
 
-
-
   return (
     <div className="main min-h-screen bg-gradient-to-b from-white from-0% via-white via-70% to-primaryHover to-100%">
       <div className=" justify-center py-[4%]">
@@ -40,7 +39,7 @@ const Login = () => {
               <FormInput type="password" id="password" placeholder="Enter your password" onChange={(e) => setUserCredentials({ ...userCredentials, password: e.target.value })} />
             </div>
             <span>
-              <a href="#" className="text-primary text-sm block mt-2 hover:underline">Forgot Password?</a>
+              <Link to={'/password-reset'} className="text-primary text-sm block mt-2 hover:underline">Forgot Password?</Link>
             </span>
             <div className="flex justify-center mt-8">
               <Button className="mx-auto w-full py-2 flex" {...(isLoading && { disabled: true })}>

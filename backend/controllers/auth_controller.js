@@ -126,14 +126,14 @@ export const loginUser = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+      expiresIn: "1d",
     }); // Create token
 
     res.cookie("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "strict",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      maxAge: 1 * 24 * 60 * 60 * 1000,
     }); // Send token as cookie
 
     return res.status(200).json({ 
@@ -276,6 +276,10 @@ export const sendResetOtp = async (req, res) => {
       .json({ success: false, message: "Please fill in email" });
   }
 
+  if (!validateEmail(email)) {
+    return res.status(400).json({ success: false, message: "Invalid email" });
+  }
+
   try {
     const user = await User.findOne({ email });
 
@@ -310,12 +314,18 @@ export const sendResetOtp = async (req, res) => {
 };
 
 export const resetPassword = async (req, res) => {
-  const { email, otp, newPassword } = req.body;
+  const { email, otp, newPassword , confirmPassword } = req.body;
 
   if (!email || !otp || !newPassword) {
     return res
       .status(400)
       .json({ success: false, message: "Missing information" });
+  }
+
+  if (newPassword !== confirmPassword) {
+    return res
+      .status(400)
+      .json({ success: false, message: "Passwords do not match" });
   }
 
   if (newPassword.length < 6) {

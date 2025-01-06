@@ -60,7 +60,7 @@ const Register = () => {
                   wrapperClass="color-ring-wrapper"
                   colors={['#FEEDE1', '#FEEDE1', '#FEEDE1', '#FEEDE1', '#FEEDE1']}
                 /> 
-                : "Login"}
+                : "Register"}
               </Button>
             </div>
             <div className="mt-6 text-center">

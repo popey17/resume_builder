@@ -4,12 +4,12 @@ import { IoEyeOffOutline } from "react-icons/io5";
 
 
 
-const FormInput = ({ id, type, value, placeholder,onChange }) => {
+const FormInput = ({ id, type, value, placeholder,onChange, className }) => {
 
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <div className="bg-primaryLight w-full rounded-md overflow-hidden flex items-center has-[input:focus]:bg-primaryLight2">
+    <div className={ `bg-primaryLight w-full rounded-md overflow-hidden flex items-center has-[input:focus]:bg-primaryLight2  ${className}`}>
       <input id={id}
         type={type === 'password' && !showPassword ? 'password' : 'text'}
         value={value}

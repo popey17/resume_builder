@@ -9,7 +9,7 @@ const EmailVerification = () => {
 
   const [otpSent, setOtpSent] = useState(false)
 
-  const { user, sendVerifyOtp } = useAuthStore()
+  const { user, sendVerifyOtp , verifyOtp } = useAuthStore()
 
   useEffect(() => {
     if (user && user.verifyOtp && user.verifyOtpExpireAt > new Date().getTime()) {
@@ -20,7 +20,6 @@ const EmailVerification = () => {
 
   const handleSendOtp = async () => {
     const res = await sendVerifyOtp();
-    // console.log(res);
     if (res.success) {
       setOtpSent(true)
     }
@@ -49,7 +48,7 @@ const EmailVerification = () => {
             </h2>
             <p>Check your email for <span className="text-primary font-bold">{user?.email}</span>. Enter the code to verify the email. The code will be expired in 2 hour. </p>
             <form className="mt-6">
-              <VerifyInput length={6} />
+              <VerifyInput length={6} verifyOtp= {verifyOtp} location={'/dashbord'} />
             </form>
           </div>
         </div>

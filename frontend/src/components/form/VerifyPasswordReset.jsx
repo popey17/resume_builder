@@ -1,15 +1,10 @@
 import { useState , useRef, useEffect } from "react";
 
 
-const VerifyInput = ({length, verifyOtp, location}) => {
+const VerifyPasswordReset = ({length, setOtp , className}) => {
 
   const [otp, setotp] = useState(new Array(length).fill(""))
   const inputRef = useRef([])
-  // const navigate = useNavigate()
-
-  // const { verifyOtp } = useAuthStore()
-
-  console.log(location);
   
   
   useEffect(() => {
@@ -17,7 +12,7 @@ const VerifyInput = ({length, verifyOtp, location}) => {
   }, [])
   
 
-  const handleChange = async (index,e) => {
+  const handleChange = (index,e) => {
     const value = e.target.value;
     if(isNaN(value)) return;
 
@@ -26,14 +21,10 @@ const VerifyInput = ({length, verifyOtp, location}) => {
 
     setotp(newOtp)
 
-    const finalOtp = newOtp.join("")
+    const joinedOtp = newOtp.join("")
 
-    if (finalOtp.length === length) {
-      const res = await verifyOtp(finalOtp)
-      if (res.success) {
-        window.location.href = location
-      }
-      
+    if (joinedOtp.length === length) {
+      setOtp(joinedOtp)
     }
     
     if (value && index < length - 1) {
@@ -53,7 +44,7 @@ const VerifyInput = ({length, verifyOtp, location}) => {
   
 
   return (
-    <div className="flex justify-center gap-2 mt-6">
+    <div className={`flex justify-center gap-2 mt-6 ${className}`}>
       {
       otp.map((value, index)=> {
         return <input 
@@ -73,4 +64,4 @@ const VerifyInput = ({length, verifyOtp, location}) => {
   )
 }
 
-export default VerifyInput
+export default VerifyPasswordReset

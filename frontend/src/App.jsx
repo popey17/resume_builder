@@ -42,7 +42,7 @@ function App() {
   }, [checkIsAuthenticated])
 
 
-  // console.log(user);
+  console.log(user);
   
 
   return (
@@ -64,10 +64,10 @@ function App() {
             <Register />
           </RedirectAuthUsers>
         } />
-        <Route path="/reset-password" element={
-          <ProtectedRoute>
+        <Route path="/password-reset" element={
+          <RedirectAuthUsers>
             <ForgetPassword />
-          </ProtectedRoute>
+          </RedirectAuthUsers>
         } />
         <Route path="/verify-email" element={
           <DirectVerifiedUser>
