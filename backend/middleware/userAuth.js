@@ -9,6 +9,10 @@ const userAuth = async (req, res, next) => {
 
   try {
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+
+    if (!decodedToken) return res.status(401).json({success: false, message: 
+      'Invalid Token.'
+    })
     
     if (decodedToken) {
       req.body.userId = decodedToken.id;

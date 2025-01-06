@@ -9,3 +9,11 @@ body {
   background: #F7F7F7;
 }
 
+button {
+  transition: all 0.3s ease;
+}
+
+.main {
+  padding-top: 65px;
+}
+
