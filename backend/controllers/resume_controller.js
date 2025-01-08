@@ -85,5 +85,57 @@ export const deleteResume = async (req, res) => {
   }
 };
 
+export const updateResume = async (req, res) => {
+  const { resumeId } = req.params;
+  const {
+    userId,
+    name,
+    profileImg,
+    email,
+    phoneNumber,
+    address,
+    objective,
+    skills,
+    socials,
+    experience,
+    educationDetails,
+  } = req.body;
+
+  try {
+    const resume = await Resume.findById(resumeId);
+    if (!resume) {
+      return res.status(404).json({ success: false, message: "Resume not found" });
+    }
+
+    const updatedResume = await Resume.findByIdAndUpdate(
+      resumeId,
+      {
+        userId,
+        name,
+        profileImg,
+        email,
+        phoneNumber,
+        address,
+        objective,
+        skills,
+        socials,
+        experience,
+        educationDetails,
+      },
+      { new: true } 
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: "Resume updated successfully",
+      data: updatedResume,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+
 
 
