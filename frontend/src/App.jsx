@@ -9,6 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import { useAuthStore } from './store/AuthStore'
 import { useEffect } from 'react'
 import EmailVerification from './pages/EmailVerification'
+import Create from './pages/Create'
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, user } = useAuthStore()
@@ -73,6 +74,9 @@ function App() {
           <DirectVerifiedUser>
             <EmailVerification />
           </DirectVerifiedUser>
+        } />
+        <Route path="/resume/create" element={
+            <Create />
         } />
       </Routes>
     </>
