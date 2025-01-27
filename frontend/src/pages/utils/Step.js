@@ -1,5 +1,7 @@
+import ExperienceInfoForm from "../../components/createForm/ExperienceInfoForm";
 import GeneralInfoForm from "../../components/createForm/GeneralInfoForm";
 import PersonalInfoForm from "../../components/createForm/PersonalInfoForm";
+import SocialInfoForm from "../../components/createForm/SocialInfoForm";
 
 export const Steps = [
   {
@@ -13,8 +15,13 @@ export const Steps = [
     key: "personal-info",
   },
   {
+    title: "Socials",
+    component: SocialInfoForm,
+    key: "socials-info",
+  },
+  {
     title: "Experience",
-    component: PersonalInfoForm,
+    component: ExperienceInfoForm,
     key: "experience-info",
   },
   {

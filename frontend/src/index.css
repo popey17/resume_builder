@@ -17,3 +17,7 @@ button {
   padding-top: 65px;
 }
 
+label {
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1));
+}
+

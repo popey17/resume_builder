@@ -23,12 +23,12 @@ const FormStepBreadcrumb = ({ stepParam }) => {
   };
 
   return (
-    <div>
-      <div className="flex">
+    <div className="mb-3">
+      <div className="flex ">
         {Steps.map((step, index) => (
           <React.Fragment key={step.key}>
             {step.key === stepParam ? (
-              <p className=" relative bg-primary px-6 py-1 after:[''] after:absolute after:w-auto after:h-full after:bg-primary after:aspect-[1/2] after:top-0 after:left-[calc(100%-1px)] after:[clip-path:polygon(0_0,0%_100%,100%_50%)] after:z-20 text-gray-400
+              <p className=" relative bg-primary px-6 py-1 after:[''] after:absolute after:w-auto after:h-full after:bg-primary after:aspect-[1/2] after:top-0 after:left-[calc(100%-1px)] after:[clip-path:polygon(0_0,0%_100%,100%_50%)] after:z-20 
               before:absolute before:w-auto before:h-full before:aspect-[1/2] before:top-0 before:left-full before:[clip-path:polygon(0_0,0%_100%,100%_50%)] before:z-20 before:bg-white">{step.title}</p>
             ) : (
               <a
