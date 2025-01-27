@@ -12,6 +12,7 @@ export default {
         'primaryLight': '#FEEDE1',
         'primaryLight2': '#F6DDCA',
         'secondary': '#BCCCDC',
+        'secondaryHover': '#d8dce0',
         'error': '#F16464',
         'background': '#F7F7F7',
       },
