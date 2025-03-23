@@ -13,6 +13,7 @@ export const createResume = async (req, res) => {
     socials,
     experience,
     educationDetails,
+    certifications
   } = req.body;
 
   try {
@@ -28,6 +29,7 @@ export const createResume = async (req, res) => {
       socials,
       experience,
       educationDetails,
+      certifications
     });
 
     await resume.save();
@@ -99,6 +101,7 @@ export const updateResume = async (req, res) => {
     socials,
     experience,
     educationDetails,
+    certifications
   } = req.body;
 
   try {
@@ -121,6 +124,7 @@ export const updateResume = async (req, res) => {
         socials,
         experience,
         educationDetails,
+        certifications
       },
       { new: true } 
     );

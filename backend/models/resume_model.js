@@ -74,6 +74,16 @@ const resumeSchema = new mongoose.Schema(
         },
       },
     ],
+    certifications: [
+      {
+        name: {
+          type: String,
+        },
+        issuedBy: {
+          type: String,
+        },
+      },
+    ],
   },
   {
     timestamps: true,  // Enable createdAt and updatedAt

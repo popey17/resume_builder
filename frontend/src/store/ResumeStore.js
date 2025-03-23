@@ -31,6 +31,13 @@ export const useResumeStore = create((set) => ({
         endDate: '',
       }
     ],
+    certifications: [
+      {
+        name: '',
+        issuedBy: '',
+      }
+    ]
+
   },
 
   setResume: (resume) => { 

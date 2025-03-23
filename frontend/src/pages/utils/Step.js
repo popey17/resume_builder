@@ -3,6 +3,7 @@ import ExperienceInfoForm from "../../components/createForm/ExperienceInfoForm";
 import GeneralInfoForm from "../../components/createForm/GeneralInfoForm";
 import PersonalInfoForm from "../../components/createForm/PersonalInfoForm";
 import SocialInfoForm from "../../components/createForm/SocialInfoForm";
+import CertificateForm from "../../components/createForm/CertificateForm";
 
 export const Steps = [
   {
@@ -32,7 +33,7 @@ export const Steps = [
   },
   {
     title: "Certification",
-    component: EducationInfoForm,
+    component: CertificateForm,
     key: "certification-info",
   }
 ];
