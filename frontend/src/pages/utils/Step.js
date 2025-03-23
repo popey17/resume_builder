@@ -1,3 +1,4 @@
+import EducationInfoForm from "../../components/createForm/EducationInfoForm";
 import ExperienceInfoForm from "../../components/createForm/ExperienceInfoForm";
 import GeneralInfoForm from "../../components/createForm/GeneralInfoForm";
 import PersonalInfoForm from "../../components/createForm/PersonalInfoForm";
@@ -26,7 +27,12 @@ export const Steps = [
   },
   {
     title: "Education",
-    component: PersonalInfoForm,
+    component: EducationInfoForm,
     key: "education-info",
   },
+  {
+    title: "Certification",
+    component: EducationInfoForm,
+    key: "certification-info",
+  }
 ];

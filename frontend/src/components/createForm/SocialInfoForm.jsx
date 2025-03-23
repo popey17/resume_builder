@@ -18,16 +18,16 @@ const SocialInfoForm = () => {
       <div className="mb-5">
         <label className=" mb-3">GitHub</label>
         <div>
-          <input type="text" placeholder="Enter GitHub Profile Url" className="border border-gray-200 p-2 w-full" value={resume?.socials?.GitHub} onChange={e=> {
-            setResume({ ...resume, socials: { ...resume.socials, GitHub: e.target.value }})
+          <input type="text" placeholder="Enter GitHub Profile Url" className="border border-gray-200 p-2 w-full" value={resume?.socials?.gitHub} onChange={e=> {
+            setResume({ ...resume, socials: { ...resume.socials, gitHub: e.target.value }})
           }} />
         </div>
       </div>
       <div className="mb-5">
         <label className=" mb-3">Facebook</label>
         <div>
-          <input type="text" placeholder="Enter Facebook Profile Url" className="border border-gray-200 p-2 w-full" value={resume?.socials?.Facebook} onChange={e=> {
-            setResume({ ...resume, socials: { ...resume.socials, Facebook: e.target.value }})
+          <input type="text" placeholder="Enter Facebook Profile Url" className="border border-gray-200 p-2 w-full" value={resume?.socials?.facebook} onChange={e=> {
+            setResume({ ...resume, socials: { ...resume.socials, facebook: e.target.value }})
           }}/>
         </div>
       </div>

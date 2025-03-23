@@ -15,7 +15,7 @@ const PersonalInfoForm = () => {
 
   return (
     <>
-      <h2 className="uppercase font-bold text-center mb-5">General Information</h2>
+      <h2 className="uppercase font-bold text-center mb-5">Personal Information</h2>
       <div className="flex gap-5 justify-between mb-3">
         <div className="w-1/2">
           <label className="">Full Name</label>

@@ -1,10 +1,11 @@
-import axios from "axios";
 import { create } from "zustand";
 
-const backendUrl = "http://localhost:3000/api";
+const storedResume = localStorage.getItem("resume")
+  ? JSON.parse(localStorage.getItem("resume"))
+  : null;
 
 export const useResumeStore = create((set) => ({
-  resume : {
+  resume : storedResume ||{
     resumeTitle: '',
     name: '',
     email: '',
@@ -22,10 +23,18 @@ export const useResumeStore = create((set) => ({
         description: ''
       }
     ],
-    educationDetails: [],
+    educationDetails: [
+      {
+        institutionName: '',
+        degree: '',
+        startDate: '',
+        endDate: '',
+      }
+    ],
   },
 
-  setResume: (resume) => set({ resume }),
-
-
+  setResume: (resume) => { 
+    set({ resume }) ;
+    localStorage.setItem('resume', JSON.stringify(resume));
+  },
 }));
