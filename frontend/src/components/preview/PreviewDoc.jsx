@@ -1,13 +1,14 @@
 import { useRef } from "react";
 import { useResumeStore } from "../../store/ResumeStore"
 import useDimensions from "../hooks/useDimensions";
+import useFormatDate from "../hooks/useFormatDate";
 
 const PreviewDoc = () => {
   const { resume } = useResumeStore();
-
   const containerRef = useRef(null);
-
   const { width } = useDimensions(containerRef);
+
+  const formatDate = useFormatDate();
 
   return (
     <div className="h-full">
@@ -38,7 +39,15 @@ const PreviewDoc = () => {
                   <div key={index} className="mb-2">
                     <h3 className="font-bold">{exp.companyName}</h3>
                     <p className="text-sm">{exp.role}</p>
-                    <p className="text-sm italic">{exp.startDate} - {exp.endDate}</p>
+                    <p className="text-sm italic inline">
+                      {/* <span >{useFormatDate(exp.startDate)}</span> */}
+                      <span>{formatDate(exp.startDate)}</span>
+
+                      <span> - </span>
+                      {exp.isStillWroking && <span>Present</span>}
+                      {!exp.isStillWroking && <span>{formatDate(exp.endDate)}</span>}
+
+                    </p>
                     <p className="text-sm whitespace-pre mt-2">{exp.description}</p>
                   </div>
                 )

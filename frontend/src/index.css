@@ -21,3 +21,48 @@ label {
   color: rgb(55 65 81 / var(--tw-text-opacity, 1));
 }
 
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + .checkBox {
+  width: 40px;
+  height: 20px;
+  /* background: red; */
+  display: inline-block;
+  border-radius: 50em;
+  border: 1px solid #F6A365;
+  position: relative;
+  cursor: pointer;
+  &::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background: #F6A365;
+    border-radius: 50em;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+input[type="checkbox"]:checked + .checkBox {
+  &::before {
+    content: "";
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background: #F6A365;
+    border-radius: 50em;
+    transition: all 0.3s ease;
+    position: absolute;
+    left: unset;
+    right: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+

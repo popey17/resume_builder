@@ -20,6 +20,7 @@ export const useResumeStore = create((set) => ({
         role: '',
         startDate: '',
         endDate: '',
+        isStillWroking: false,
         description: ''
       }
     ],

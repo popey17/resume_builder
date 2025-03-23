@@ -10,6 +10,7 @@ const ExperienceInfoForm = () => {
     role: '',
     startDate: '',
     endDate: '',
+    isStillWroking: false,
     description: ''
   }
 
@@ -21,6 +22,12 @@ const ExperienceInfoForm = () => {
 
     setResume({ ...resume, experience: list });
   };
+
+  const handleCheckChange = (e, index) => {
+    const list = [...resume.experience];    
+    list[index]["isStillWroking"] = e.target.checked;
+    setResume({ ...resume, experience: list });
+  }
 
   const HandleAddNewExp = () => {
     setResume({ ...resume, experience: [...resume.experience, formField] });
@@ -61,8 +68,19 @@ const ExperienceInfoForm = () => {
               <div className="w-1/2">
                 <label className="">End Date</label>
                 <input type="date" name="endDate" placeholder="Enter Company Name" className="border border-gray-200 p-2 w-full" onChange={(e) => handleChange(e, index)}
-                  value={exp?.endDate} />
+                  value={exp?.endDate} 
+                  disabled={exp?.isStillWroking}/>
               </div>
+            </div>
+            <div className="mb-3">
+              <label className="flex items-center gap-2" htmlFor={`isStillWroking${index}`}>Still Working
+              <input type="checkbox" name="isStillWroking" id={`isStillWroking${index}`}  placeholder="Enter Company Name" className="border border-gray-200 p-2" onChange={(e) => handleCheckChange(e, index)}
+                value={exp?.isStillWroking} />
+              <span className="checkBox">
+              </span>
+              </label>
+              
+              
             </div>
             <div>
               <label className="">Description</label>

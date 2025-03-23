@@ -51,10 +51,16 @@ const resumeSchema = new mongoose.Schema(
         },
         endDate: {
           type: Date,
-          default: null,  // Set default to null if experience is ongoing
+          default: null,
         },
         description: {
           type: String,
+        },
+        stillWorking: {
+          type: Boolean,
+          default: function () {
+            return this.endDate === null;
+          },
         },
       },
     ],
@@ -67,10 +73,17 @@ const resumeSchema = new mongoose.Schema(
           type: String,
         },
         startDate: {
-          type: Date,  // Changed to Date type
+          type: Date,
         },
         endDate: {
-          type: Date,  // Changed to Date type
+          type: Date,
+          default: null,
+        },
+        stillAttending: {
+          type: Boolean,
+          default: function () {
+            return this.endDate === null;
+          },
         },
       },
     ],
@@ -86,7 +99,7 @@ const resumeSchema = new mongoose.Schema(
     ],
   },
   {
-    timestamps: true,  // Enable createdAt and updatedAt
+    timestamps: true,
   }
 );
 
