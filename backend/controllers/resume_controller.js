@@ -2,6 +2,7 @@ import Resume from "../models/resume_model.js";
 
 export const createResume = async (req, res) => {
   const {
+    resumeTitle,
     userId,
     name,
     profileImg,
@@ -18,6 +19,7 @@ export const createResume = async (req, res) => {
 
   try {
     const resume = new Resume({
+      resumeTitle,
       userId,
       name,
       profileImg,
@@ -31,6 +33,13 @@ export const createResume = async (req, res) => {
       educationDetails,
       certifications
     });
+
+    console.log(resume);
+    
+
+    if( !resume.name || !resume.resumeTitle) {
+      return res.status(400).json({ success: false, message: "Name or Title is required" });
+    }
 
     await resume.save();
 
@@ -140,6 +149,14 @@ export const updateResume = async (req, res) => {
   }
 };
 
+export const getResumes = async (req, res) => {
+  try {
+    const resumes = await Resume.find();
+    return res.status(200).json({ success: true, resumes });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+}
 
 
 

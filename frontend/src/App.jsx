@@ -10,6 +10,7 @@ import { useAuthStore } from './store/AuthStore'
 import { useEffect } from 'react'
 import EmailVerification from './pages/EmailVerification'
 import Create from './pages/Create'
+import Dasboard from './pages/Dashboard'
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, user } = useAuthStore()
@@ -77,6 +78,9 @@ function App() {
         } />
         <Route path="/resume/create" element={
             <Create />
+        } />
+        <Route path="/dashboard" element={
+            <Dasboard />
         } />
       </Routes>
     </>

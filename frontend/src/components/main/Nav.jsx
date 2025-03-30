@@ -51,7 +51,7 @@ const Nav = () => {
                   {
                   showDropDown &&
                   <div className='absolute top-[100%] w-fit right-0 bg-white shadow-lg rounded-lg p-5 text-[15px] text-black'>
-                    <Link to='/profile' className='block mb-[10px] hover:text-primary'>Dashboard</Link>
+                    <Link to='/dashboard' className='block mb-[10px] hover:text-primary'>Dashboard</Link>
                     {
                       !user.isVerified && <Link to='/verify-email' className='block whitespace-nowrap mb-[10px] hover:text-primary'>Verify Email</Link>
                     }
